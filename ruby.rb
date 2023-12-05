@@ -1,20 +1,31 @@
 
+def encrypte(string, shift_factor)
+    
+    return "Ops! That's an empty string" if string.empty?
 
-    def encrypte(string, shift_factor)
+    encrypted_str = ""
 
-        decrypted_text = ""
+    string.each_char do |char|
+        if char.match(/[A-Za-z]/)
 
-        #iterate through each char in the string
-        string.each_char do |char|
+             is_uppercase = char.upcase == char
+
+            alphabet_pos = char.ord - (is_uppercase ? "A" : "a").ord
+
+            shifted_position = (alphabet_pos + shift_factor) % 26
             
-            #Check if the character is a letter.
-            if char.match(/[A-Za-z]/)
-
-
+            shifted_char = (shifted_position + (is_uppercase ? "A" : "a").ord).chr
+            
+            encrypted_str += shifted_char
+        else
+            encrypted_str += char
         end
-
-
+   
     end
 
+    encrypted_str
 
-    encrypte("Hello", 7)
+end
+
+
+puts encrypte("What a string!", 5)
