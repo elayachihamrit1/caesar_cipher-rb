@@ -1,5 +1,5 @@
 
-def encrypte(string, shift_factor)
+def encrypte(string, shift_factor = 2)
     
     return "Ops! That's an empty string" if string.empty?
 
